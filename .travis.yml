@@ -1,6 +1,14 @@
 language: node_js
 node_js:
-  - '0.10'
-  - '0.12'
   - '4'
   - '6'
+  - '0.12'
+  - '0.10'
+dist: precise
+before_install:
+  # Check if the Node.js version is 0.10 and install spawn-sync
+  - |
+    if [[ "$TRAVIS_NODE_VERSION" == "0.10" ]]; then
+      echo "Installing spawn-sync version 1.0.15 for Node.js $TRAVIS_NODE_VERSION"
+      npm install spawn-sync@1.0.15
+    fi
